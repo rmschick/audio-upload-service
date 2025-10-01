@@ -1,0 +1,17 @@
+{
+  "file": "test.txt",
+  "edits": [
+    {
+      "action": "replace",
+      "start_line": 1,
+      "end_line": 1,
+      "content": "package upload"
+    },
+    {
+      "action": "replace",
+      "start_line": 1,
+      "end_line": 15,
+      "content": "package main\n\nimport (\n\t\"personal-dev/routes\"\n)\n\nfunc main() {\n\trouter := routes.SetupRouter()\n\n\trouter.Run(\":8080\")\n"
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+version: "2"
+run:
+  modules-download-mode: vendor
+  tests: false
+linters:
+  default: none
+  enable:
+    - asasalint
+    - bidichk
+    - bodyclose
+    - contextcheck
+    - copyloopvar
+    - dupl
+    - durationcheck
+    - errcheck
+    - errname
+    - errorlint
+    - funlen
+    - gocheckcompilerdirectives
+    - gochecknoglobals
+    - goconst
+    - gocritic
+    - godot
+    - godox
+    - goprintffuncname
+    - gosec
+    - govet
+    - ineffassign
+    - interfacebloat
+    - ireturn
+    - mirror
+    - mnd
+    - nakedret
+    - nestif
+    - nilerr
+    - nilnil
+    - nlreturn
+    - noctx
+    - nonamedreturns
+    - nosprintfhostport
+    - prealloc
+    - predeclared
+    - promlinter
+    - revive
+    - rowserrcheck
+    - sqlclosecheck
+    - staticcheck
+    - tagalign
+    - tparallel
+    - unconvert
+    - unparam
+    - unused
+    - usestdlibvars
+    - whitespace
+    - wsl_v5
+  settings:
+    dupl:
+      threshold: 100
+    funlen:
+      lines: 80
+      statements: 60
+    gocritic:
+      disabled-checks:
+        - sloppyLen
+    govet:
+      disable:
+        - fieldalignment
+      enable-all: true
+    revive:
+      rules:
+        - name: var-naming # we need to use a lot of Id instead of ID to accommodate code generation
+          disabled: true
+    wsl_v5:
+      allow-first-in-block: true
+      allow-whole-block: false
+      branch-max-lines: 2
+    ireturn:
+      allow:
+        - error
+        - generic
+        - stdlib
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+formatters:
+  enable:
+    - gci
+    - gofmt
+    - gofumpt
+    - goimports
+  settings:
+    gci:
+      sections:
+        - standard
+        - default
+        - prefix(personal-dev)
+    goimports:
+      local-prefixes:
+        - personal-dev
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
